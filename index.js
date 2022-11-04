@@ -1,7 +1,8 @@
 // dependencies
-const mysql = require("mysql");
-const inquirer = require("inquirer");
-const { default: ListPrompt } = require("inquirer/lib/prompts/list");
+const mysql = import("mysql");
+const inquirer = import("inquirer");
+
+const fs = import("fs");
 
 // connection to employee db
 const database = mysql.createConnection({
@@ -13,6 +14,7 @@ const database = mysql.createConnection({
 
 database.connect((err) => {
     if (err) throw err;
+    console.log('Connected!');
     beginPrompt();
 });
 
@@ -48,18 +50,42 @@ function beginPrompt() {
 function viewDepartments() {
     database.query("SELECT * FROM department", (err, results) => {
         if (err) throw err;
-        begin();
+        beginPrompt();
     })
 }
 
-function viewRoles() { }
+// functions to view roles
+function viewRoles() {
+    database.query("SELECT * FROM role", (err, results) => {
+        if (err) throw err;
+        beginPrompt();
+    })
+}
 
-function viewEmployees() { }
+// function to view employees
+function viewEmployees() {
+    database.query("SELECT * FROM employee", (err, results) => {
+        if (err) throw err;
+        beginPrompt();
+    })
+}
 
-function addDepartment() { }
+// function to add a new department
+function addDepartment() {
 
-function addRole() { }
+}
 
-function addEmployee() { }
+// function to add a new role
+function addRole() {
 
-function updateEmployee() { }
+}
+
+// function to add a new employee
+function addEmployee() {
+
+}
+
+// function to update an employee
+function updateEmployee() {
+
+}
