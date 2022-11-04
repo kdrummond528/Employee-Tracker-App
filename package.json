@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kdrummond528/Employee-Tracker-App#readme",
   "dependencies": {
+    "inquirer": "^9.1.4",
     "mysql": "^2.18.1"
   }
 }
