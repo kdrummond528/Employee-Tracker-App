@@ -1,0 +1,19 @@
+{
+  "name": "employee-tracker-app",
+  "version": "1.0.0",
+  "description": "command line application to manage a companys employee database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdrummond528/Employee-Tracker-App.git"
+  },
+  "author": "Karina Drummond",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdrummond528/Employee-Tracker-App/issues"
+  },
+  "homepage": "https://github.com/kdrummond528/Employee-Tracker-App#readme"
+}
