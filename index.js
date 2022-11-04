@@ -87,14 +87,29 @@ function addDepartment() {
 
 // function to add a new role
 function addRole() {
-    inquirer.prompt({
-        name: "role",
-        type: "input",
-        message: "What is the new role?",
-    })
-        .then((answer) => {
+    // import department list for choices in prompt
+    let departmentList =
 
-        })
+        inquirer.prompt(
+            {
+                name: "role",
+                type: "input",
+                message: "What is the new role?",
+            },
+            {
+                name: "department",
+                type: "list",
+                message: "What department does the new role fall under?",
+                choices: departmentList,
+            },
+            {
+                name: "salary",
+                type: "input",
+                message: "What is the salary for the new role?",
+            })
+            .then((answer) => {
+                // insert role, department, and salary into values
+            })
 
     if (err) throw err;
     beginPrompt();
