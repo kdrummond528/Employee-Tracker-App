@@ -7,12 +7,12 @@ CREATE DATABASE employees_db;
 USE employees_db;
 
 -- creates the tables for department, role, and employee database --
-CREATE TABLE departments(
+CREATE TABLE department (
 id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 name VARCHAR(30)
 );
 
-CREATE TABLE roles(
+CREATE TABLE role (
 id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 title VARCHAR(30),
 salary DECIMAL,
@@ -21,7 +21,7 @@ FOREIGN KEY (department_id)
 REFERENCES department(id)
 );
 
-CREATE TABLE employees(
+CREATE TABLE employee (
 id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 first_name VARCHAR(30),
 last_name VARCHAR(30),
@@ -34,4 +34,4 @@ REFERENCES employee(id)
 );
 
 -- see the employees database in use --
-SELECT DATABASE();
+-- SELECT DATABASE();
