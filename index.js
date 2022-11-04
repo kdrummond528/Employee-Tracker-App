@@ -44,7 +44,13 @@ function beginPrompt() {
         });
 }
 
-function viewDepartments() { }
+// function to show departments
+function viewDepartments() {
+    database.query("SELECT * FROM department", (err, results) => {
+        if (err) throw err;
+        begin();
+    })
+}
 
 function viewRoles() { }
 
