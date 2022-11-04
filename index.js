@@ -43,3 +43,17 @@ function beginPrompt() {
             if (answer.choice === "Exit") { database.end(); }
         });
 }
+
+function viewDepartments() { }
+
+function viewRoles() { }
+
+function viewEmployees() { }
+
+function addDepartment() { }
+
+function addRole() { }
+
+function addEmployee() { }
+
+function updateEmployee() { }
