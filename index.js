@@ -1,3 +1,5 @@
+const { type } = require("os");
+
 // dependencies
 const mysql = import("mysql");
 const inquirer = import("inquirer");
@@ -159,8 +161,8 @@ function updateEmployee() {
     // import role list for choices in prompt
     let roleList = {}
 
-    // import manager list for choices in prompt
-    let managerList = {}
+    // import employee list for choices in prompt
+    let employeeList = {}
 
     inquirer.prompt(
         {
@@ -168,16 +170,22 @@ function updateEmployee() {
             type: "list",
             message: "What would you like to do?",
             choices: ['Update employee role',
-                '', '', '',]
+                'Update employee salary',
+                'Update employee departmeny',
+                'Update employee manager']
         },
         {
-
-        },
-    })
+            name: "employee",
+            type: "list",
+            message: "Which employee would you like to update?",
+            choices: employeeList
+        }
+        // if statements for responses to updates
+    )
         .then((answer) => {
             // insert updated employee information to values
         })
-console.log("Updated employee in the database.")
-if (err) throw err;
-beginPrompt();
+    console.log("Updated employee in the database.")
+    if (err) throw err;
+    beginPrompt();
 }
