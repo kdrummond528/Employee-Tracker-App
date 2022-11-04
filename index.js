@@ -72,17 +72,47 @@ function viewEmployees() {
 
 // function to add a new department
 function addDepartment() {
+    inquirer.prompt({
+        name: "department",
+        type: "input",
+        message: "What is the new department?",
+    })
+        .then((answer) => {
+            // add department
+        })
 
+    if (err) throw err;
+    beginPrompt();
 }
 
 // function to add a new role
 function addRole() {
+    inquirer.prompt({
+        name: "role",
+        type: "input",
+        message: "What is the new role?",
+    })
+        .then((answer) => {
 
+        })
+
+    if (err) throw err;
+    beginPrompt();
 }
 
 // function to add a new employee
 function addEmployee() {
+    inquirer.prompt({
+        name: "employee",
+        type: "input",
+        message: "What is the new employee's name?",
+    })
+        .then((answer) => {
 
+        })
+
+    if (err) throw err;
+    beginPrompt();
 }
 
 // function to update an employee
