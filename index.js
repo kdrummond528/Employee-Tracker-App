@@ -33,7 +33,13 @@ function beginPrompt() {
             "Exit"]
     })
         .then((answer) => {
-            if 
-
-    });
+            if (answer.choice === "View all departments") { viewDepartments(); }
+            if (answer.choice === "View all roles") { viewRoles(); }
+            if (answer.choice === "View all employees") { viewEmployees(); }
+            if (answer.choice === "Add a department") { addDepartment(); }
+            if (answer.choice === "Add a roll") { addRole(); }
+            if (answer.choice === "Add an employee") { addEmployee(); }
+            if (answer.choice === "Update an employee") { updateEmployee(); }
+            if (answer.choice === "Exit") { database.end(); }
+        });
 }
