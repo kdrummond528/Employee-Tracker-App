@@ -1,10 +1,9 @@
-const { type } = require("os");
-
 // dependencies
-const mysql = import("mysql");
-const inquirer = import("inquirer");
+const inquirer = require("inquirer");
+const mysql = require("mysql2");
 
-const fs = import("fs");
+
+const fs = require("fs");
 
 // connection to employee db
 const database = mysql.createConnection({
@@ -37,14 +36,14 @@ function beginPrompt() {
             "Exit"]
     })
         .then((answer) => {
-            if (answer.choice === "View all departments") { viewDepartments(); }
-            if (answer.choice === "View all roles") { viewRoles(); }
-            if (answer.choice === "View all employees") { viewEmployees(); }
-            if (answer.choice === "Add a department") { addDepartment(); }
-            if (answer.choice === "Add a roll") { addRole(); }
-            if (answer.choice === "Add an employee") { addEmployee(); }
-            if (answer.choice === "Update an employee") { updateEmployee(); }
-            if (answer.choice === "Exit") { database.end(); }
+            if (answer.options === "View all departments") { viewDepartments(); }
+            if (answer.options === "View all roles") { viewRoles(); }
+            if (answer.options === "View all employees") { viewEmployees(); }
+            if (answer.options === "Add a department") { addDepartment(); }
+            if (answer.options === "Add a role") { addRole(); }
+            if (answer.options === "Add an employee") { addEmployee(); }
+            if (answer.options === "Update an employee") { updateEmployee(); }
+            if (answer.options === "Exit") { database.end(); }
         });
 }
 
@@ -52,6 +51,7 @@ function beginPrompt() {
 function viewDepartments() {
     database.query("SELECT * FROM department", (err, results) => {
         if (err) throw err;
+        console.table(results)
         beginPrompt();
     })
 }
@@ -60,6 +60,7 @@ function viewDepartments() {
 function viewRoles() {
     database.query("SELECT * FROM role", (err, results) => {
         if (err) throw err;
+        console.table(results)
         beginPrompt();
     })
 }
@@ -68,6 +69,7 @@ function viewRoles() {
 function viewEmployees() {
     database.query("SELECT * FROM employee", (err, results) => {
         if (err) throw err;
+        console.table(results)
         beginPrompt();
     })
 }
@@ -81,10 +83,11 @@ function addDepartment() {
     })
         .then((answer) => {
             // add department to the databse
+
+            // console.log("Added department to the database.")
+            // if (err) throw err;
+            // beginPrompt();
         })
-    console.log("Added department to the database.")
-    if (err) throw err;
-    beginPrompt();
 }
 
 // function to add a new role
@@ -111,10 +114,11 @@ function addRole() {
             })
             .then((answer) => {
                 // insert role, department, and salary into values
+
+                console.log("Added role to the database.")
+                if (err) throw err;
+                beginPrompt();
             })
-    console.log("Added role to the database.")
-    if (err) throw err;
-    beginPrompt();
 }
 
 // function to add a new employee
@@ -150,10 +154,11 @@ function addEmployee() {
         })
         .then((answer) => {
             // insert new employees first name, last name, role, and manager to values
+
+            console.log("Added employee to the database.")
+            if (err) throw err;
+            beginPrompt();
         })
-    console.log("Added employee to the database.")
-    if (err) throw err;
-    beginPrompt();
 }
 
 // function to update an employee

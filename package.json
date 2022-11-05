@@ -4,7 +4,8 @@
   "description": "command line application to manage a companys employee database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,8 @@
   },
   "homepage": "https://github.com/kdrummond528/Employee-Tracker-App#readme",
   "dependencies": {
-    "inquirer": "^9.1.4",
-    "mysql": "^2.18.1"
+    "inquirer": "^8.1.4",
+    "mysql2": "^2.3.3"
   },
-  "keywords": [],
-  "type": "module"
+  "keywords": []
 }
