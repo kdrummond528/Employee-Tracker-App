@@ -50,6 +50,7 @@ function beginPrompt() {
 // function to show departments
 function viewDepartments() {
     database.query("SELECT * FROM department", (err, results) => {
+
         if (err) throw err;
         console.table(results)
         beginPrompt();
@@ -83,10 +84,12 @@ function addDepartment() {
     })
         .then((answer) => {
             // add department to the databse
-
-            // console.log("Added department to the database.")
-            // if (err) throw err;
-            // beginPrompt();
+            database.query(`INSERT INTO department(name)
+            VALUES (?)`, answer.department, function (err) {
+                console.log("Added department to the database.")
+                if (err) throw err;
+                beginPrompt();
+            })
         })
 }
 
@@ -113,84 +116,86 @@ function addRole() {
                 choices: departmentList,
             })
             .then((answer) => {
-                // insert role, department, and salary into values
-
-                console.log("Added role to the database.")
-                if (err) throw err;
-                beginPrompt();
-            })
-}
+                // add role, department, and salary into values
+                database.query(`INSERT INTO role(name)
+                    VALUES (?)`, answer.department, function (err) {
+                    console.log("Added role to the database.")
+                    if (err) throw err;
+                    beginPrompt();
+                })
+            }
 
 // function to add a new employee
 function addEmployee() {
-    // import role list for choices in prompt
-    let roleList = {}
+                    // import role list for choices in prompt
+                    let roleList = {}
 
-    // import manager list for choices in prompt
-    let managerList = {}
+                    // import manager list for choices in prompt
+                    let managerList = {}
 
-    inquirer.prompt(
-        {
-            name: "first_name",
-            type: "input",
-            message: "What is the employee's first name?",
-        },
-        {
-            name: "last_name",
-            type: "input",
-            message: "What is the employee's last name?",
-        },
-        {
-            name: "employee_role",
-            type: "input",
-            message: "What is the employee's role?",
-            choices: roleList,
-        },
-        {
-            name: "employee_manager",
-            type: "input",
-            message: "What is the employee's manager?",
-            choices: managerList,
-        })
-        .then((answer) => {
-            // insert new employees first name, last name, role, and manager to values
+                    inquirer.prompt(
+                        {
+                            name: "first_name",
+                            type: "input",
+                            message: "What is the employee's first name?",
+                        },
+                        {
+                            name: "last_name",
+                            type: "input",
+                            message: "What is the employee's last name?",
+                        },
+                        {
+                            name: "employee_role",
+                            type: "input",
+                            message: "What is the employee's role?",
+                            choices: roleList,
+                        },
+                        {
+                            name: "employee_manager",
+                            type: "input",
+                            message: "What is the employee's manager?",
+                            choices: managerList,
+                        })
+                        .then((answer) => {
+                            // insert new employees first name, last name, role, and manager to values
 
-            console.log("Added employee to the database.")
-            if (err) throw err;
-            beginPrompt();
-        })
-}
+                            console.log("Added employee to the database.")
+                            if (err) throw err;
+                            beginPrompt();
+                        })
+                }
 
 // function to update an employee
 function updateEmployee() {
-    // import role list for choices in prompt
-    let roleList = {}
+                    // import role list for choices in prompt
+                    let roleList = {}
 
-    // import employee list for choices in prompt
-    let employeeList = {}
+                    // import employee list for choices in prompt
+                    let employeeList = {}
 
-    inquirer.prompt(
-        {
-            name: "update_type",
-            type: "list",
-            message: "What would you like to do?",
-            choices: ['Update employee role',
-                'Update employee salary',
-                'Update employee departmeny',
-                'Update employee manager']
-        },
-        {
-            name: "employee",
-            type: "list",
-            message: "Which employee would you like to update?",
-            choices: employeeList
-        }
-        // if statements for responses to updates
-    )
-        .then((answer) => {
-            // insert updated employee information to values
-        })
-    console.log("Updated employee in the database.")
-    if (err) throw err;
-    beginPrompt();
-}
+                    inquirer.prompt(
+                        {
+                            name: "update_type",
+                            type: "list",
+                            message: "What would you like to do?",
+                            choices: ['Update employee role',
+                                'Update employee salary',
+                                'Update employee departmeny',
+                                'Update employee manager']
+                        },
+                        {
+                            name: "employee",
+                            type: "list",
+                            message: "Which employee would you like to update?",
+                            choices: employeeList
+                        }
+                        // if statements for responses to updates
+                    )
+                        .then((answer) => {
+                            // insert updated employee information to values
+
+                            console.log("Updated employee in the database.")
+                            if (err) throw err;
+                            beginPrompt();
+                        })
+                }

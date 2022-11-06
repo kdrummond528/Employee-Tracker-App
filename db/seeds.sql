@@ -10,7 +10,7 @@ VALUES ("Sales"),
 -- title, salary, and id information
 INSERT INTO role (title, salary, department_id)
 VALUES ("Salesperson", 40000, 1),
-("Sales Manager", 60000, 2)
+("Sales Manager", 60000, 2),
 ("Software Engineer", 80000, 3),
 ("Lead Engineer", 100000, 4),
 ("Lawyer", 80000, 5),
@@ -24,7 +24,7 @@ VALUES ("Salesperson", 40000, 1),
 
 -- first and last name, role and manager id information 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Tony", "Stark", 1, 2),
+VALUES ("Tony", "Stark", 1, NULL),
 ("Carol", "Danvers", 2, NULL),
 ("Thor", "Odinson", 3, 4),
 ("Stephen", "Strange", 4, NULL),
