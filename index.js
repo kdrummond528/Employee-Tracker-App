@@ -120,7 +120,7 @@ function addRole() {
         .then((answer) => {
             // add role, department, and salary into values
             database.query(`INSERT INTO role(title, salary, department_id)
-            VALUES (?,?,?)`,
+            VALUES (?, ?, ?)`,
                 {
                     title: answer.role_title,
                     salary: answer.salary,
@@ -165,7 +165,7 @@ function addEmployee() {
         .then((answer) => {
             // insert new employees first name, last name, role, and manager to values
             database.query(`INSERT INTO employee(first_name, last_name, role_id, manager_id)
-            VALUES (?,?,?, ?)`,
+            VALUES (?, ?, ?, ?)`,
                 {
                     first_name: answer.first_name,
                     last_name: answer.last_name,
@@ -182,7 +182,16 @@ function addEmployee() {
 
 // function to update an employee
 function updateEmployee() {
+
+    // add employeeList from seeds.sql
+
     inquirer.prompt(
+        {
+            name: "employee",
+            type: "list",
+            message: "Which employee would you like to update?",
+            choices: employeeList
+        },
         {
             name: "update_type",
             type: "list",
@@ -192,19 +201,22 @@ function updateEmployee() {
                 'Update employee department',
                 'Update employee manager']
         },
-        {
-            name: "employee",
-            type: "list",
-            message: "Which employee would you like to update?",
-            choices: employeeList
-        }
+
         // if statements for responses to updates
     )
         .then((answer) => {
-            // insert updated employee information to values
-
-            console.log("Updated employee in the database.")
-            if (err) throw err;
-            beginPrompt();
+            // add updated information to employee values
+            database.query(`UPDATE employee SET ?`,
+                {
+                    first_name: answer.first_name,
+                    last_name: answer.last_name,
+                    role_id: answer.employee_role,
+                    manager_id: answer.employee_manager,
+                },
+                function (err) {
+                    console.log("Updated employee in the database.")
+                    if (err) throw err;
+                    beginPrompt();
+                })
         })
 }
