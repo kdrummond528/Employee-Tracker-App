@@ -24,8 +24,8 @@ VALUES ("Salesperson", 40000, 1),
 
 -- first and last name, role and manager id information 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Tony", "Stark", 1, NULL),
-("Carol", "Danvers", 2, NULL),
+VALUES ("Tony", "Stark", 2, NULL),
+("Carol", "Danvers", 1, 2),
 ("Thor", "Odinson", 3, 4),
 ("Stephen", "Strange", 4, NULL),
 ("Steve", "Rogers", 5, 6),
