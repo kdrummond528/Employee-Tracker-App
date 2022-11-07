@@ -22,6 +22,8 @@ This is an Employee Tracker Application which was created using node.js, express
 
 Once inquirer is installed, in the command line run:  `node index.js` .
 
+Follow the prompts to view departments, roles, and/or employees as well as add a department, role, and/or employee, update an employee, or exit when finished.
+
 ## Links
 GitHub Repository: [Employee Tracker Application](https://github.com/kdrummond528/Employee-Tracker-App)
 
