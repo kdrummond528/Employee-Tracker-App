@@ -29,9 +29,24 @@ GitHub Repository: [Employee Tracker Application](https://github.com/kdrummond52
 
 
 ## Demo
-Screenshots: 
 
-Instructional Video: 
+<b><u>Home Screen:</b></u>
+
+![Home Screen](./assets/homescreen.png)
+
+<b><u>Viewing Departments Display:</b></u>
+
+![deptview](./assets/departmentdisplay.png)
+
+<b><u>Viewing Roles Display:</b></u>
+
+![rolesview](./assets/roledisplay.png)
+
+<b><u>Viewing Employees Display:</b></u>
+
+![employeeview](./assets/employeedisplay.png)
+
+[Instructional Video](https://drive.google.com/file/d/17UNm-jFyQuiBUPir9nAadYdxMvWCAg8p/view?usp=sharing)
 
 ## Questions
 
